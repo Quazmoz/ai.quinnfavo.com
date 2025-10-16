@@ -90,96 +90,259 @@
 <body>
   <header>
     <h1>Free AI Platforms for 2025</h1>
-    <p>Browse and access top free AI tools instantly.</p>
+    <p>Browse and access top free AI tools instantly — ordered by popularity.</p>
   </header>
   <main id="platforms-container">
     <!-- Cards will be dynamically inserted here -->
   </main>
   <script>
     const platforms = [
+      // Ordered by popularity based on October 2025 data
       {
         name: "ChatGPT (OpenAI)",
         url: "https://chat.openai.com",
-        desc: "Free text, code & writing AI assistant.",
-        icon: "https://openai.com/content/images/2022/05/chatgpt-logo.svg"
+        desc: "Most popular AI - 321M+ monthly visits. Text, code & writing assistant.",
+        icon: "https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.82af6fe1.png"
       },
       {
-        name: "Claude (Anthropic)",
-        url: "https://claude.ai",
-        desc: "Conversational AI with reasoning and coding.",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/0/01/Anthropic_logo.svg"
+        name: "Canva",
+        url: "https://canva.com",
+        desc: "285M+ visits. AI design tools including Magic Eraser and templates.",
+        icon: "https://static.canva.com/web/images/favicon.ico"
+      },
+      {
+        name: "DeepL",
+        url: "https://deepl.com",
+        desc: "167M+ visits. Best AI translation and writing enhancement tool.",
+        icon: "https://static.deepl.com/img/favicon/favicon_96.png"
+      },
+      {
+        name: "Google Gemini",
+        url: "https://gemini.google.com",
+        desc: "60M+ visits. Google's AI assistant integrated with Workspace.",
+        icon: "https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg"
+      },
+      {
+        name: "Grammarly",
+        url: "https://grammarly.com",
+        desc: "38M+ visits. AI-enhanced grammar and spell checker.",
+        icon: "https://static.grammarly.com/assets/files/efe0e6352fd31f4b11f7e4b33dd66df0/favicon.svg"
+      },
+      {
+        name: "Microsoft Copilot",
+        url: "https://copilot.microsoft.com",
+        desc: "13M+ visits. AI tools in Windows, Edge, and Microsoft 365.",
+        icon: "https://copilot.microsoft.com/favicon.ico"
       },
       {
         name: "Perplexity",
         url: "https://www.perplexity.ai",
-        desc: "AI-powered search engine with citations.",
+        desc: "10M+ visits. AI-powered search engine with citations.",
         icon: "https://www.perplexity.ai/favicon.ico"
       },
       {
-        name: "Google Gemini",
-        url: "https://gemini.google",
-        desc: "Google’s AI assistant integrated with Workspace.",
-        icon: "https://www.google.com/favicon.ico"
+        name: "DeepSeek",
+        url: "https://chat.deepseek.com",
+        desc: "9.7M+ visits. Open source AI chat and coding assistant.",
+        icon: "https://chat.deepseek.com/favicon.ico"
       },
       {
-        name: "Microsoft Copilot",
-        url: "https://microsoft.com/copilot",
-        desc: "AI-powered tools in Microsoft 365 and Windows.",
-        icon: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+        name: "Claude (Anthropic)",
+        url: "https://claude.ai",
+        desc: "6M+ visits. Conversational AI with advanced reasoning and coding.",
+        icon: "https://claude.ai/favicon.ico"
       },
       {
-        name: "Canva Magic Studio",
-        url: "https://canva.com",
-        desc: "AI design tools including Magic Eraser.",
-        icon: "https://canva.com/favicon.ico"
+        name: "Zapier",
+        url: "https://zapier.com",
+        desc: "4.4M+ visits. Workflow automation with AI features.",
+        icon: "https://cdn.zappy.app/8bb5404b18c2e2a7acfcbfe4d35d8216.png"
       },
       {
-        name: "Lexica Art",
-        url: "https://lexica.art",
-        desc: "AI image generator with style options.",
-        icon: "https://lexica.art/favicon.ico"
+        name: "Gamma",
+        url: "https://gamma.app",
+        desc: "3.9M+ visits. AI presentation and website builder.",
+        icon: "https://gamma.app/favicon.ico"
       },
       {
-        name: "Adobe Firefly",
-        url: "https://adobe.com/firefly",
-        desc: "AI image and graphic creation suite.",
-        icon: "https://adobe.com/favicon.ico"
+        name: "Poe (Quora)",
+        url: "https://poe.com",
+        desc: "3M+ visits. Multi-model AI chat aggregator (GPT-4, Claude, Gemini).",
+        icon: "https://poe.com/favicon.ico"
       },
       {
         name: "Runway",
         url: "https://runwayml.com",
-        desc: "Video editing and AI generation platform.",
+        desc: "1.9M+ visits. Video editing and AI generation platform.",
         icon: "https://runwayml.com/favicon.ico"
+      },
+      {
+        name: "Replit",
+        url: "https://replit.com",
+        desc: "1.8M+ visits. AI coding assistant and online IDE.",
+        icon: "https://replit.com/public/icons/favicon-196.png"
+      },
+      {
+        name: "Cursor",
+        url: "https://cursor.com",
+        desc: "1.6M+ visits. AI coding assistant for VS Code (fastest growing).",
+        icon: "https://cursor.com/favicon.ico"
+      },
+      {
+        name: "Otter.ai",
+        url: "https://otter.ai",
+        desc: "714K+ visits. AI transcription and meeting notes.",
+        icon: "https://otter.ai/favicon.ico"
+      },
+      {
+        name: "Manus",
+        url: "https://www.manus.im",
+        desc: "680K+ visits. AI-powered creative tools.",
+        icon: "https://www.manus.im/favicon.ico"
       },
       {
         name: "Synthesia",
         url: "https://synthesia.io",
-        desc: "AI avatar video creation.",
-        icon: "https://synthesia.io/favicon.ico"
+        desc: "591K+ visits. AI avatar video creation.",
+        icon: "https://www.synthesia.io/favicon.ico"
+      },
+      {
+        name: "NotebookLM (Google)",
+        url: "https://notebooklm.google.com",
+        desc: "473K+ visits. Document research AI assistant (57% growth).",
+        icon: "https://notebooklm.google.com/favicon.ico"
+      },
+      {
+        name: "Lovable",
+        url: "https://lovable.dev",
+        desc: "432K+ visits. AI prototype app builder.",
+        icon: "https://lovable.dev/favicon.ico"
+      },
+      {
+        name: "Jasper AI",
+        url: "https://jasper.ai",
+        desc: "356K+ visits. AI content generation assistant.",
+        icon: "https://jasper.ai/favicon.ico"
+      },
+      {
+        name: "Grok",
+        url: "https://x.com/i/grok",
+        desc: "AI assistant by xAI with real-time X integration.",
+        icon: "https://abs.twimg.com/favicons/twitter.3.ico"
+      },
+      {
+        name: "Qwen",
+        url: "https://qwenlm.github.io",
+        desc: "Open-source large language model by Alibaba.",
+        icon: "https://qwenlm.github.io/favicon.ico"
+      },
+      {
+        name: "Codium (Qodo)",
+        url: "https://www.qodo.ai",
+        desc: "AI coding platform for quality-first development.",
+        icon: "https://www.qodo.ai/favicon.ico"
+      },
+      {
+        name: "CodeSignal",
+        url: "https://codesignal.com",
+        desc: "Discover and develop in-demand coding skills with AI.",
+        icon: "https://codesignal.com/favicon.ico"
+      },
+      {
+        name: "Base44",
+        url: "https://base44.com",
+        desc: "Build apps with AI in minutes.",
+        icon: "https://base44.com/favicon.ico"
+      },
+      {
+        name: "Bolt",
+        url: "https://bolt.new",
+        desc: "Natural language full-stack app generator.",
+        icon: "https://bolt.new/favicon.ico"
+      },
+      {
+        name: "Jules (Google)",
+        url: "https://ai.google.dev/jules",
+        desc: "AI coding agent for task automation.",
+        icon: "https://www.gstatic.com/devrel-devsite/prod/vf9c8e4d67e04a6e551c896257f5f8be90f4dd53f95d7ef73f835e6130b1b4b2f/cloud/images/favicons/onecloud/super_cloud.png"
+      },
+      {
+        name: "invideo AI",
+        url: "https://invideo.io",
+        desc: "Turn ideas into videos with AI video creator.",
+        icon: "https://invideo.io/favicon.ico"
+      },
+      {
+        name: "Dia Browser",
+        url: "https://dia.so",
+        desc: "AI chat integrated with your browser tabs.",
+        icon: "https://dia.so/favicon.ico"
+      },
+      {
+        name: "GeoSpy AI",
+        url: "https://geospy.ai",
+        desc: "AI-powered geolocation from images.",
+        icon: "https://geospy.ai/favicon.ico"
+      },
+      {
+        name: "Galaxy AI",
+        url: "https://www.samsung.com/galaxy-ai",
+        desc: "Samsung's AI-powered mobile tools.",
+        icon: "https://www.samsung.com/etc.clientlibs/samsung/clientlibs/consumer/global/clientlib-common/resources/images/favicon.png"
+      },
+      {
+        name: "Mermaid Chart",
+        url: "https://www.mermaidchart.com",
+        desc: "AI-powered diagram and flowchart generator.",
+        icon: "https://www.mermaidchart.com/favicon.ico"
+      },
+      {
+        name: "AI Song Generator",
+        url: "https://www.aiva.ai",
+        desc: "Create songs using AI composition.",
+        icon: "https://www.aiva.ai/favicon.ico"
+      },
+      {
+        name: "Wix AI Website Builder",
+        url: "https://www.wix.com/ai",
+        desc: "Create websites in minutes with AI.",
+        icon: "https://www.wix.com/favicon.ico"
+      },
+      {
+        name: "Genspark",
+        url: "https://www.genspark.ai",
+        desc: "AI-powered all-in-one workspace.",
+        icon: "https://www.genspark.ai/favicon.ico"
+      },
+      {
+        name: "Reyes IDW",
+        url: "https://reyes.ai",
+        desc: "AI for intelligent document workflows.",
+        icon: "https://reyes.ai/favicon.ico"
+      },
+      {
+        name: "Google Flow",
+        url: "https://labs.google/flow",
+        desc: "AI filmmaking tool with free monthly credits.",
+        icon: "https://labs.google/favicon.ico"
+      },
+      {
+        name: "Google Whisk",
+        url: "https://labs.google/fx/whisk",
+        desc: "Free AI image & short clip generation.",
+        icon: "https://labs.google/favicon.ico"
       },
       {
         name: "Notion AI",
         url: "https://notion.so",
         desc: "AI note-taking and workflow assistant.",
-        icon: "https://notion.so/favicon.ico"
-      },
-      {
-        name: "Grammarly",
-        url: "https://grammarly.com",
-        desc: "AI-enhanced grammar and spell checker.",
-        icon: "https://grammarly.com/favicon.ico"
+        icon: "https://www.notion.so/images/favicon.ico"
       },
       {
         name: "Writer.com",
         url: "https://writer.com",
         desc: "Collaborative AI writing platform.",
         icon: "https://writer.com/favicon.ico"
-      },
-      {
-        name: "Zapier",
-        url: "https://zapier.com",
-        desc: "Workflow automation with AI features.",
-        icon: "https://zapier.com/favicon.ico"
       },
       {
         name: "Reclaim.ai",
@@ -191,37 +354,19 @@
         name: "Clockwise",
         url: "https://getclockwise.com",
         desc: "AI calendar assistant for teams.",
-        icon: "https://getclockwise.com/favicon.ico"
+        icon: "https://www.getclockwise.com/favicon.ico"
       },
       {
         name: "Google Vertex AI",
         url: "https://cloud.google.com/vertex-ai",
-        desc: "Developer AI tools and APIs.",
-        icon: "https://cloud.google.com/favicon.ico"
+        desc: "Developer AI tools and APIs with free tier.",
+        icon: "https://www.gstatic.com/devrel-devsite/prod/vf9c8e4d67e04a6e551c896257f5f8be90f4dd53f95d7ef73f835e6130b1b4b2f/cloud/images/favicons/onecloud/super_cloud.png"
       },
       {
         name: "Bubble",
         url: "https://bubble.io",
         desc: "No-code app builder with AI tools.",
         icon: "https://bubble.io/favicon.ico"
-      },
-      {
-        name: "Cursor",
-        url: "https://cursor.so",
-        desc: "AI coding assistant for VS Code.",
-        icon: "https://cursor.so/favicon.ico"
-      },
-      {
-        name: "Lovable",
-        url: "https://lovable.ai",
-        desc: "AI prototype app builder.",
-        icon: "https://lovable.ai/favicon.ico"
-      },
-      {
-        name: "Bolt",
-        url: "https://bolt.com",
-        desc: "Natural language full-stack app generator.",
-        icon: "https://bolt.com/favicon.ico"
       },
       {
         name: "Tellius",
@@ -236,76 +381,34 @@
         icon: "https://thoughtspot.com/favicon.ico"
       },
       {
-        name: "AI Apps Directory",
-        url: "https://aiapps.com",
-        desc: "Directory of free AI tools.",
-        icon: "https://aiapps.com/favicon.ico"
-      },
-      {
-        name: "DeepL Write & Translate",
-        url: "https://deepl.com",
-        desc: "AI translation and writing help.",
-        icon: "https://deepl.com/favicon.ico"
-      },
-      {
-        name: "Poe by Quora",
-        url: "https://poe.com",
-        desc: "Multi-model AI chat aggregator.",
-        icon: "https://poe.com/favicon.ico"
-      },
-      {
-        name: "Otter.ai",
-        url: "https://otter.ai",
-        desc: "AI transcription and note-taking.",
-        icon: "https://otter.ai/favicon.ico"
-      },
-      {
         name: "HubSpot AI",
         url: "https://hubspot.com",
         desc: "Marketing and writing assistant AI.",
         icon: "https://hubspot.com/favicon.ico"
       },
       {
-        name: "NotebookLM (Google)",
-        url: "https://notebooklm.google.com",
-        desc: "Document research AI assistant.",
-        icon: "https://notebooklm.google.com/favicon.ico"
-      },
-      {
         name: "Firebase AI Studio",
         url: "https://firebase.google.com/products/ai",
         desc: "AI app prototype builder.",
-        icon: "https://firebase.google.com/favicon.ico"
+        icon: "https://www.gstatic.com/devrel-devsite/prod/vf9c8e4d67e04a6e551c896257f5f8be90f4dd53f95d7ef73f835e6130b1b4b2f/firebase/images/favicon.png"
       },
       {
-        name: "DeepSeek Coder",
-        url: "https://deepseek.ai",
-        desc: "Open source AI coding assistant.",
-        icon: "https://deepseek.ai/favicon.ico"
+        name: "Lexica Art",
+        url: "https://lexica.art",
+        desc: "AI image generator with style options.",
+        icon: "https://lexica.art/favicon.ico"
       },
       {
-        name: "Jasper AI",
-        url: "https://jasper.ai",
-        desc: "AI content generation assistant.",
-        icon: "https://jasper.ai/favicon.ico"
+        name: "Adobe Firefly",
+        url: "https://firefly.adobe.com",
+        desc: "AI image and graphic creation suite.",
+        icon: "https://firefly.adobe.com/favicon.ico"
       },
       {
         name: "RunDiffusion",
         url: "https://rundiffusion.com",
         desc: "AI image generation hosted service.",
         icon: "https://rundiffusion.com/favicon.ico"
-      },
-      {
-        name: "Google Whisk",
-        url: "https://labs.google/fx/whisk",
-        desc: "Free AI image & short clip generation.",
-        icon: "https://labs.google/fx/favicon.ico"
-      },
-      {
-        name: "Google Flow",
-        url: "https://labs.google/flow",
-        desc: "AI filmmaking tool with free monthly credits.",
-        icon: "https://labs.google/flow/favicon.ico"
       }
     ];
 
@@ -321,6 +424,9 @@
       const img = document.createElement('img');
       img.src = icon;
       img.alt = name + " icon";
+      img.onerror = function() {
+        this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"%3E%3Cpath fill="%23999" d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM5 17l3.5-4.5 2.5 3.01L14.5 11l4.5 6H5z"/%3E%3C/svg%3E';
+      };
       a.appendChild(img);
 
       const div = document.createElement('div');
