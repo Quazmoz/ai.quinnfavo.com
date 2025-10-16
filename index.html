@@ -18,7 +18,7 @@
     header {
       background: #fff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 1rem 2rem;
+      padding: 1.5rem 2rem;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -26,19 +26,42 @@
     header h1 {
       margin: 0;
       font-weight: 700;
+      font-size: 2rem;
     }
     header p {
-      margin: 0.25rem 0 0;
+      margin: 0.5rem 0 0;
       font-size: 1rem;
       color: #555;
     }
     main {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 2rem auto;
-      padding: 0 1rem;
+      padding: 0 2rem;
+    }
+    .category {
+      margin-bottom: 3rem;
+    }
+    .category-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e0e0e0;
+    }
+    .category-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .category-icon {
+      font-size: 1.8rem;
+      margin-right: 0.75rem;
+    }
+    .platforms-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
     }
     .card {
       background: white;
@@ -70,23 +93,30 @@
     .card h3 {
       margin: 0 0 0.3rem;
       font-weight: 600;
+      font-size: 1rem;
     }
     .card p {
       margin: 0;
-      font-size: 0.9rem;
-      color: #555;
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.4;
     }
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       header {
         padding: 1rem;
       }
+      header h1 {
+        font-size: 1.5rem;
+      }
       main {
-        margin: 1rem;
+        margin: 1.5rem auto;
+        padding: 0 1rem;
+      }
+      .platforms-grid {
         grid-template-columns: 1fr;
       }
-      .card img {
-        width: 35px;
-        height: 35px;
+      .category-header h2 {
+        font-size: 1.25rem;
       }
     }
   </style>
@@ -94,270 +124,292 @@
 <body>
   <header>
     <h1>Free AI Platforms for 2025</h1>
-    <p>Browse and access top free AI tools instantly — ordered by popularity.</p>
+    <p>Browse and access top free AI tools instantly — organized by category.</p>
   </header>
   <main id="platforms-container">
-    <!-- Cards will be dynamically inserted here -->
+    <!-- Categories will be dynamically inserted here -->
   </main>
   <script>
-    const platforms = [
-      // Ordered by popularity based on October 2025 data
-      {
-        name: "ChatGPT (OpenAI)",
-        url: "https://chat.openai.com",
-        desc: "Most popular AI - 321M+ monthly visits. Text, code & writing assistant."
-      },
-      {
-        name: "Canva",
-        url: "https://www.canva.com",
-        desc: "285M+ visits. AI design tools including Magic Eraser and templates."
-      },
-      {
-        name: "DeepL",
-        url: "https://www.deepl.com",
-        desc: "167M+ visits. Best AI translation and writing enhancement tool."
-      },
-      {
-        name: "Google Gemini",
-        url: "https://gemini.google.com",
-        desc: "60M+ visits. Google's AI assistant integrated with Workspace."
-      },
-      {
-        name: "Grammarly",
-        url: "https://www.grammarly.com",
-        desc: "38M+ visits. AI-enhanced grammar and spell checker."
-      },
-      {
-        name: "Microsoft Copilot",
-        url: "https://copilot.microsoft.com",
-        desc: "13M+ visits. AI tools in Windows, Edge, and Microsoft 365."
-      },
-      {
-        name: "Perplexity",
-        url: "https://www.perplexity.ai",
-        desc: "10M+ visits. AI-powered search engine with citations."
-      },
-      {
-        name: "DeepSeek",
-        url: "https://chat.deepseek.com",
-        desc: "9.7M+ visits. Open source AI chat and coding assistant."
-      },
-      {
-        name: "Claude (Anthropic)",
-        url: "https://claude.ai",
-        desc: "6M+ visits. Conversational AI with advanced reasoning and coding."
-      },
-      {
-        name: "Zapier",
-        url: "https://zapier.com",
-        desc: "4.4M+ visits. Workflow automation with AI features."
-      },
-      {
-        name: "Gamma",
-        url: "https://gamma.app",
-        desc: "3.9M+ visits. AI presentation and website builder."
-      },
-      {
-        name: "Poe (Quora)",
-        url: "https://poe.com",
-        desc: "3M+ visits. Multi-model AI chat aggregator (GPT-4, Claude, Gemini)."
-      },
-      {
-        name: "Runway",
-        url: "https://runwayml.com",
-        desc: "1.9M+ visits. Video editing and AI generation platform."
-      },
-      {
-        name: "Replit",
-        url: "https://replit.com",
-        desc: "1.8M+ visits. AI coding assistant and online IDE."
-      },
-      {
-        name: "Cursor",
-        url: "https://www.cursor.com",
-        desc: "1.6M+ visits. AI coding assistant for VS Code (fastest growing)."
-      },
-      {
-        name: "Otter.ai",
-        url: "https://otter.ai",
-        desc: "714K+ visits. AI transcription and meeting notes."
-      },
-      {
-        name: "Manus",
-        url: "https://www.manus.im",
-        desc: "680K+ visits. AI-powered creative tools."
-      },
-      {
-        name: "Synthesia",
-        url: "https://www.synthesia.io",
-        desc: "591K+ visits. AI avatar video creation."
-      },
-      {
-        name: "NotebookLM (Google)",
-        url: "https://notebooklm.google.com",
-        desc: "473K+ visits. Document research AI assistant (57% growth)."
-      },
-      {
-        name: "Lovable",
-        url: "https://lovable.dev",
-        desc: "432K+ visits. AI prototype app builder."
-      },
-      {
-        name: "Jasper AI",
-        url: "https://www.jasper.ai",
-        desc: "356K+ visits. AI content generation assistant."
-      },
-      {
-        name: "Grok",
-        url: "https://x.com/i/grok",
-        desc: "AI assistant by xAI with real-time X integration."
-      },
-      {
-        name: "Qwen",
-        url: "https://qwenlm.github.io",
-        desc: "Open-source large language model by Alibaba."
-      },
-      {
-        name: "Codium (Qodo)",
-        url: "https://www.qodo.ai",
-        desc: "AI coding platform for quality-first development."
-      },
-      {
-        name: "CodeSignal",
-        url: "https://codesignal.com",
-        desc: "Discover and develop in-demand coding skills with AI."
-      },
-      {
-        name: "Base44",
-        url: "https://www.base44.com",
-        desc: "Build apps with AI in minutes."
-      },
-      {
-        name: "Bolt",
-        url: "https://bolt.new",
-        desc: "Natural language full-stack app generator."
-      },
-      {
-        name: "Jules (Google)",
-        url: "https://ai.google.dev/gemini-api/docs/jules",
-        desc: "AI coding agent for task automation."
-      },
-      {
-        name: "invideo AI",
-        url: "https://invideo.io",
-        desc: "Turn ideas into videos with AI video creator."
-      },
-      {
-        name: "Dia Browser",
-        url: "https://www.diabrowser.com",
-        desc: "AI chat integrated with your browser tabs."
-      },
-      {
-        name: "GeoSpy AI",
-        url: "https://geospy.ai",
-        desc: "AI-powered geolocation from images."
-      },
-      {
-        name: "Galaxy AI",
-        url: "https://www.samsung.com/us/smartphones/galaxy-ai/",
-        desc: "Samsung's AI-powered mobile tools."
-      },
-      {
-        name: "Mermaid Chart",
-        url: "https://www.mermaidchart.com",
-        desc: "AI-powered diagram and flowchart generator."
-      },
-      {
-        name: "AI Song Generator (AIVA)",
-        url: "https://www.aiva.ai",
-        desc: "Create songs using AI composition."
-      },
-      {
-        name: "Wix AI Website Builder",
-        url: "https://www.wix.com",
-        desc: "Create websites in minutes with AI."
-      },
-      {
-        name: "Genspark",
-        url: "https://www.genspark.ai",
-        desc: "AI-powered all-in-one workspace."
-      },
-      {
-        name: "Google Flow",
-        url: "https://labs.google/flow",
-        desc: "AI filmmaking tool with free monthly credits."
-      },
-      {
-        name: "Google Whisk",
-        url: "https://labs.google/fx/tools/whisk",
-        desc: "Free AI image & short clip generation."
-      },
-      {
-        name: "Notion AI",
-        url: "https://www.notion.so",
-        desc: "AI note-taking and workflow assistant."
-      },
-      {
-        name: "Writer.com",
-        url: "https://writer.com",
-        desc: "Collaborative AI writing platform."
-      },
-      {
-        name: "Reclaim.ai",
-        url: "https://reclaim.ai",
-        desc: "Smart calendar and scheduling assistant."
-      },
-      {
-        name: "Clockwise",
-        url: "https://www.getclockwise.com",
-        desc: "AI calendar assistant for teams."
-      },
-      {
-        name: "Google Vertex AI",
-        url: "https://cloud.google.com/vertex-ai",
-        desc: "Developer AI tools and APIs with free tier."
-      },
-      {
-        name: "Bubble",
-        url: "https://bubble.io",
-        desc: "No-code app builder with AI tools."
-      },
-      {
-        name: "Tellius",
-        url: "https://www.tellius.com",
-        desc: "AI analytics and data discovery."
-      },
-      {
-        name: "ThoughtSpot",
-        url: "https://www.thoughtspot.com",
-        desc: "AI data visualization platform."
-      },
-      {
-        name: "HubSpot AI",
-        url: "https://www.hubspot.com",
-        desc: "Marketing and writing assistant AI."
-      },
-      {
-        name: "Firebase AI Studio",
-        url: "https://firebase.google.com/products/genkit",
-        desc: "AI app prototype builder."
-      },
-      {
-        name: "Lexica Art",
-        url: "https://lexica.art",
-        desc: "AI image generator with style options."
-      },
-      {
-        name: "Adobe Firefly",
-        url: "https://www.adobe.com/products/firefly.html",
-        desc: "AI image and graphic creation suite."
-      },
-      {
-        name: "RunDiffusion",
-        url: "https://rundiffusion.com",
-        desc: "AI image generation hosted service."
-      }
-    ];
+    const platformsByCategory = {
+      "🤖 AI Chat Assistants": [
+        {
+          name: "ChatGPT (OpenAI)",
+          url: "https://chat.openai.com",
+          desc: "Most popular AI - 321M+ monthly visits. Text, code & writing assistant."
+        },
+        {
+          name: "Claude (Anthropic)",
+          url: "https://claude.ai",
+          desc: "6M+ visits. Conversational AI with advanced reasoning and coding."
+        },
+        {
+          name: "Google Gemini",
+          url: "https://gemini.google.com",
+          desc: "60M+ visits. Google's AI assistant integrated with Workspace."
+        },
+        {
+          name: "Microsoft Copilot",
+          url: "https://copilot.microsoft.com",
+          desc: "13M+ visits. AI tools in Windows, Edge, and Microsoft 365."
+        },
+        {
+          name: "Meta AI",
+          url: "https://www.meta.ai",
+          desc: "Free AI assistant across Facebook, Instagram, WhatsApp with Llama models."
+        },
+        {
+          name: "Perplexity",
+          url: "https://www.perplexity.ai",
+          desc: "10M+ visits. AI-powered search engine with citations."
+        },
+        {
+          name: "DeepSeek",
+          url: "https://chat.deepseek.com",
+          desc: "9.7M+ visits. Open source AI chat and coding assistant."
+        },
+        {
+          name: "Poe (Quora)",
+          url: "https://poe.com",
+          desc: "3M+ visits. Multi-model AI chat aggregator (GPT-4, Claude, Gemini)."
+        },
+        {
+          name: "Grok",
+          url: "https://x.com/i/grok",
+          desc: "AI assistant by xAI with real-time X integration."
+        },
+        {
+          name: "Qwen",
+          url: "https://qwenlm.github.io",
+          desc: "Open-source large language model chatbot by Alibaba."
+        },
+        {
+          name: "Manus",
+          url: "https://www.manus.im",
+          desc: "680K+ visits. AI chatbot for creative tasks and content generation."
+        },
+        {
+          name: "Genspark",
+          url: "https://www.genspark.ai",
+          desc: "AI-powered search and workspace similar to Perplexity."
+        },
+        {
+          name: "MyNinja.AI",
+          url: "https://myninja.ai",
+          desc: "Multi-agent AI assistant for productivity, coding, and research."
+        }
+      ],
+      "💼 Productivity & Workflow": [
+        {
+          name: "Notion AI",
+          url: "https://www.notion.so",
+          desc: "AI note-taking and workflow assistant."
+        },
+        {
+          name: "Zapier",
+          url: "https://zapier.com",
+          desc: "4.4M+ visits. Workflow automation with AI features."
+        },
+        {
+          name: "Reclaim.ai",
+          url: "https://reclaim.ai",
+          desc: "Smart calendar and scheduling assistant."
+        },
+        {
+          name: "Clockwise",
+          url: "https://www.getclockwise.com",
+          desc: "AI calendar assistant for teams."
+        },
+        {
+          name: "Otter.ai",
+          url: "https://otter.ai",
+          desc: "714K+ visits. AI transcription and meeting notes."
+        },
+        {
+          name: "HubSpot AI",
+          url: "https://www.hubspot.com",
+          desc: "Marketing and writing assistant AI."
+        },
+        {
+          name: "NotebookLM (Google)",
+          url: "https://notebooklm.google.com",
+          desc: "473K+ visits. Document research AI assistant (57% growth)."
+        }
+      ],
+      "✍️ Writing & Language": [
+        {
+          name: "Grammarly",
+          url: "https://www.grammarly.com",
+          desc: "38M+ visits. AI-enhanced grammar and spell checker."
+        },
+        {
+          name: "DeepL",
+          url: "https://www.deepl.com",
+          desc: "167M+ visits. Best AI translation and writing enhancement tool."
+        },
+        {
+          name: "Writer.com",
+          url: "https://writer.com",
+          desc: "Collaborative AI writing platform."
+        },
+        {
+          name: "Jasper AI",
+          url: "https://www.jasper.ai",
+          desc: "356K+ visits. AI content generation assistant."
+        }
+      ],
+      "👨‍💻 Developer & Coding Tools": [
+        {
+          name: "Cursor",
+          url: "https://www.cursor.com",
+          desc: "1.6M+ visits. AI coding assistant for VS Code (fastest growing)."
+        },
+        {
+          name: "Replit",
+          url: "https://replit.com",
+          desc: "1.8M+ visits. AI coding assistant and online IDE."
+        },
+        {
+          name: "Bolt",
+          url: "https://bolt.new",
+          desc: "Natural language full-stack app generator."
+        },
+        {
+          name: "Lovable",
+          url: "https://lovable.dev",
+          desc: "432K+ visits. AI prototype app builder."
+        },
+        {
+          name: "Codium (Qodo)",
+          url: "https://www.qodo.ai",
+          desc: "AI coding platform for quality-first development."
+        },
+        {
+          name: "CodeSignal",
+          url: "https://codesignal.com",
+          desc: "Discover and develop in-demand coding skills with AI."
+        },
+        {
+          name: "Base44",
+          url: "https://www.base44.com",
+          desc: "Build apps with AI in minutes."
+        },
+        {
+          name: "Jules (Google)",
+          url: "https://ai.google.dev/gemini-api/docs/jules",
+          desc: "AI coding agent for task automation."
+        },
+        {
+          name: "Firebase AI Studio",
+          url: "https://firebase.google.com/products/genkit",
+          desc: "AI app prototype builder."
+        },
+        {
+          name: "Google Vertex AI",
+          url: "https://cloud.google.com/vertex-ai",
+          desc: "Developer AI tools and APIs with free tier."
+        },
+        {
+          name: "Bubble",
+          url: "https://bubble.io",
+          desc: "No-code app builder with AI tools."
+        }
+      ],
+      "🎨 Design & Creative": [
+        {
+          name: "Canva",
+          url: "https://www.canva.com",
+          desc: "285M+ visits. AI design tools including Magic Eraser and templates."
+        },
+        {
+          name: "Adobe Firefly",
+          url: "https://www.adobe.com/products/firefly.html",
+          desc: "AI image and graphic creation suite."
+        },
+        {
+          name: "Lexica Art",
+          url: "https://lexica.art",
+          desc: "AI image generator with style options."
+        },
+        {
+          name: "RunDiffusion",
+          url: "https://rundiffusion.com",
+          desc: "AI image generation hosted service."
+        },
+        {
+          name: "Mermaid Chart",
+          url: "https://www.mermaidchart.com",
+          desc: "AI-powered diagram and flowchart generator."
+        }
+      ],
+      "🎥 Video & Multimedia": [
+        {
+          name: "Runway",
+          url: "https://runwayml.com",
+          desc: "1.9M+ visits. Video editing and AI generation platform."
+        },
+        {
+          name: "Synthesia",
+          url: "https://www.synthesia.io",
+          desc: "591K+ visits. AI avatar video creation."
+        },
+        {
+          name: "invideo AI",
+          url: "https://invideo.io",
+          desc: "Turn ideas into videos with AI video creator."
+        },
+        {
+          name: "Google Flow",
+          url: "https://labs.google/flow",
+          desc: "AI filmmaking tool with free monthly credits."
+        },
+        {
+          name: "Google Whisk",
+          url: "https://labs.google/fx/tools/whisk",
+          desc: "Free AI image & short clip generation."
+        },
+        {
+          name: "AI Song Generator (AIVA)",
+          url: "https://www.aiva.ai",
+          desc: "Create songs using AI composition."
+        }
+      ],
+      "📊 Data & Analytics": [
+        {
+          name: "Tellius",
+          url: "https://www.tellius.com",
+          desc: "AI analytics and data discovery."
+        },
+        {
+          name: "ThoughtSpot",
+          url: "https://www.thoughtspot.com",
+          desc: "AI data visualization platform."
+        }
+      ],
+      "🌐 Website Builders": [
+        {
+          name: "Gamma",
+          url: "https://gamma.app",
+          desc: "3.9M+ visits. AI presentation and website builder."
+        },
+        {
+          name: "Wix AI Website Builder",
+          url: "https://www.wix.com",
+          desc: "Create websites in minutes with AI."
+        }
+      ],
+      "🔍 Specialized Tools": [
+        {
+          name: "GeoSpy AI",
+          url: "https://geospy.ai",
+          desc: "AI-powered geolocation from images."
+        },
+        {
+          name: "Dia Browser",
+          url: "https://www.diabrowser.com",
+          desc: "AI-powered browser with integrated chat capabilities."
+        }
+      ]
+    };
 
     // Helper function to extract domain from URL
     function getDomain(url) {
@@ -377,32 +429,57 @@
 
     const container = document.getElementById('platforms-container');
 
-    platforms.forEach(({name, url, desc}) => {
-      const a = document.createElement('a');
-      a.href = url;
-      a.target = "_blank";
-      a.className = 'card';
-      a.rel = "noopener noreferrer";
+    // Iterate through each category
+    Object.entries(platformsByCategory).forEach(([categoryName, platforms]) => {
+      // Create category section
+      const categoryDiv = document.createElement('div');
+      categoryDiv.className = 'category';
 
-      const img = document.createElement('img');
-      img.src = getFaviconUrl(url);
-      img.alt = name + " icon";
-      img.onerror = function() {
-        // Fallback to first letter if Google's favicon service fails
-        this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="%23e0e0e0"/%3E%3Ctext x="50" y="65" text-anchor="middle" fill="%23666" font-size="50" font-weight="bold"%3E' + name.charAt(0) + '%3C/text%3E%3C/svg%3E';
-      };
-      a.appendChild(img);
+      // Create category header
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'category-header';
+      
+      const heading = document.createElement('h2');
+      heading.textContent = categoryName;
+      headerDiv.appendChild(heading);
+      
+      categoryDiv.appendChild(headerDiv);
 
-      const div = document.createElement('div');
-      const h3 = document.createElement('h3');
-      h3.textContent = name;
-      const p = document.createElement('p');
-      p.textContent = desc;
-      div.appendChild(h3);
-      div.appendChild(p);
+      // Create platforms grid
+      const gridDiv = document.createElement('div');
+      gridDiv.className = 'platforms-grid';
 
-      a.appendChild(div);
-      container.appendChild(a);
+      // Add each platform card
+      platforms.forEach(({name, url, desc}) => {
+        const a = document.createElement('a');
+        a.href = url;
+        a.target = "_blank";
+        a.className = 'card';
+        a.rel = "noopener noreferrer";
+
+        const img = document.createElement('img');
+        img.src = getFaviconUrl(url);
+        img.alt = name + " icon";
+        img.onerror = function() {
+          // Fallback to first letter if Google's favicon service fails
+          this.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Crect width="100" height="100" fill="%23e0e0e0"/%3E%3Ctext x="50" y="65" text-anchor="middle" fill="%23666" font-size="50" font-weight="bold"%3E' + name.charAt(0) + '%3C/text%3E%3C/svg%3E';
+        };
+        a.appendChild(img);
+
+        const div = document.createElement('div');
+        const h3 = document.createElement('h3');
+        h3.textContent = name;
+        const p = document.createElement('p');
+        p.textContent = desc;
+        div.appendChild(h3);
+        div.appendChild(p);
+
+        a.appendChild(div);
+        gridDiv.appendChild(a);
+      });
+
+      categoryDiv.appendChild(gridDiv);
+      container.appendChild(categoryDiv);
     });
   </script>
 </body>
