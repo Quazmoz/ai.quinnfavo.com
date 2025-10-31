@@ -10,15 +10,46 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%235B8FF9;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%239D5FFF;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='url(%23grad)'/%3E%3Cpath d='M30 35 Q50 25 70 35 M30 50 Q50 40 70 50 M30 65 Q50 55 70 65' stroke='white' stroke-width='3' fill='none'/%3E%3Ccircle cx='30' cy='35' r='3' fill='white'/%3E%3Ccircle cx='70' cy='35' r='3' fill='white'/%3E%3Ccircle cx='30' cy='50' r='3' fill='white'/%3E%3Ccircle cx='70' cy='50' r='3' fill='white'/%3E%3Ccircle cx='30' cy='65' r='3' fill='white'/%3E%3Ccircle cx='70' cy='65' r='3' fill='white'/%3E%3Ccircle cx='50' cy='30' r='4' fill='white'/%3E%3C/svg%3E" />
 
   <style>
+    :root {
+      --bg-primary: #f9f9f9;
+      --bg-secondary: #fff;
+      --text-primary: #222;
+      --text-secondary: #555;
+      --text-muted: #666;
+      --border-color: #e0e0e0;
+      --card-bg: white;
+      --header-link-bg: #f0f0f0;
+      --header-link-hover: #e0e0e0;
+      --shadow: rgba(0,0,0,0.1);
+      --card-shadow: rgb(0 0 0 / 0.1);
+      --card-shadow-hover: rgb(0 0 0 / 0.15);
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #1a1a1a;
+      --bg-secondary: #2d2d2d;
+      --text-primary: #ffffff;
+      --text-secondary: #cccccc;
+      --text-muted: #999999;
+      --border-color: #404040;
+      --card-bg: #2d2d2d;
+      --header-link-bg: #404040;
+      --header-link-hover: #4a4a4a;
+      --shadow: rgba(255,255,255,0.1);
+      --card-shadow: rgb(255 255 255 / 0.05);
+      --card-shadow-hover: rgb(255 255 255 / 0.1);
+    }
+
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
+      background: var(--bg-primary);
       margin: 0; padding: 0;
-      color: #222;
+      color: var(--text-primary);
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
     header {
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      background: var(--bg-secondary);
+      box-shadow: 0 2px 5px var(--shadow);
       padding: 1.5rem 2rem;
       position: sticky;
       top: 0;
@@ -26,6 +57,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
     .header-content {
       display: flex;
@@ -39,28 +71,48 @@
     header p {
       margin: 0.5rem 0 0;
       font-size: 1rem;
-      color: #555;
+      color: var(--text-secondary);
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .theme-toggle {
+      background: var(--header-link-bg);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      font-size: 1.2rem;
+    }
+    .theme-toggle:hover {
+      background: var(--header-link-hover);
     }
     .header-links {
       display: flex;
       gap: 1rem;
-      margin-left: 2rem;
     }
     .header-link {
       display: flex;
       align-items: center;
-      background: #f0f0f0;
+      background: var(--header-link-bg);
       border-radius: 6px;
       padding: 0.5rem 1rem;
       text-decoration: none;
-      color: #222;
+      color: var(--text-primary);
       font-size: 0.9rem;
       transition: background 0.2s ease;
       min-width: 180px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px var(--shadow);
     }
     .header-link:hover {
-      background: #e0e0e0;
+      background: var(--header-link-hover);
     }
     .header-link img {
       width: 16px;
@@ -87,13 +139,13 @@
       align-items: center;
       margin-bottom: 1.5rem;
       padding-bottom: 0.5rem;
-      border-bottom: 2px solid #e0e0e0;
+      border-bottom: 2px solid var(--border-color);
     }
     .category-header h2 {
       margin: 0;
       font-size: 1.5rem;
       font-weight: 600;
-      color: #333;
+      color: var(--text-primary);
     }
     .platforms-grid {
       display: grid;
@@ -101,19 +153,19 @@
       gap: 1.25rem;
     }
     .card {
-      background: white;
+      background: var(--card-bg);
       border-radius: 8px;
-      box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+      box-shadow: 0 2px 6px var(--card-shadow);
       padding: 1rem 1.5rem;
       display: flex;
       align-items: center;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
       text-decoration: none;
       color: inherit;
     }
     .card:hover {
-      box-shadow: 0 6px 15px rgb(0 0 0 / 0.15);
+      box-shadow: 0 6px 15px var(--card-shadow-hover);
       transform: translateY(-5px);
     }
     .card img {
@@ -131,11 +183,12 @@
       margin: 0 0 0.3rem;
       font-weight: 600;
       font-size: 1rem;
+      color: var(--text-primary);
     }
     .card p {
       margin: 0;
       font-size: 0.85rem;
-      color: #666;
+      color: var(--text-muted);
       line-height: 1.4;
     }
     @media (max-width: 768px) {
@@ -147,10 +200,14 @@
       .header-content {
         margin-bottom: 1rem;
       }
+      .header-right {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+      }
       .header-links {
         flex-direction: column;
         width: 100%;
-        margin-left: 0;
       }
       .header-link {
         justify-content: center;
@@ -176,19 +233,24 @@
       <h1>Free AI Platforms for 2025</h1>
       <p>Browse and access top free AI tools instantly — organized by category.</p>
     </div>
-    <div class="header-links">
-      <a href="https://github.com/Quazmoz/ai.quinnfavo.com" class="header-link" target="_blank">
-        <img src="https://github.com/fluidicon.png" alt="GitHub icon">
-        <span>GitHub Repo</span>
-      </a>
-      <a href="https://profile.quinnfavo.com" class="header-link" target="_blank">
-        <img src="https://profile.quinnfavo.com/favicon.ico" alt="Profile icon" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2265%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2250%22 font-weight=%22bold%22%3EP%3C/text%3E%3C/svg%3E';">
-        <span>Profile</span>
-      </a>
-      <a href="https://quinnfavo.com" class="header-link" target="_blank">
-        <img src="https://quinnfavo.com/favicon.ico" alt="Website icon" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2265%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2250%22 font-weight=%22bold%22%3EW%3C/text%3E%3C/svg%3E';">
-        <span>Website</span>
-      </a>
+    <div class="header-right">
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
+        <span id="theme-icon">🌙</span>
+      </button>
+      <div class="header-links">
+        <a href="https://github.com/Quazmoz/ai.quinnfavo.com" class="header-link" target="_blank">
+          <img src="https://github.com/fluidicon.png" alt="GitHub icon">
+          <span>GitHub Repo</span>
+        </a>
+        <a href="https://profile.quinnfavo.com" class="header-link" target="_blank">
+          <img src="https://profile.quinnfavo.com/favicon.ico" alt="Profile icon" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2265%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2250%22 font-weight=%22bold%22%3EP%3C/text%3E%3C/svg%3E';">
+          <span>Profile</span>
+        </a>
+        <a href="https://quinnfavo.com" class="header-link" target="_blank">
+          <img src="https://quinnfavo.com/favicon.ico" alt="Website icon" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2265%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2250%22 font-weight=%22bold%22%3EW%3C/text%3E%3C/svg%3E';">
+          <span>Website</span>
+        </a>
+      </div>
     </div>
   </header>
   <main id="platforms-container">
@@ -238,11 +300,12 @@
       "👨‍💻 Developer & Coding Tools": [
         { name: "Windsurf Editor", url: "https://windsurf.com", desc: "First agentic AI IDE with Cascade agent. AI-native code editor with live preview & deploy features." },
         { name: "Cursor", url: "https://www.cursor.com", desc: "1.6M+ visits. AI coding assistant for VS Code (fastest growing)." },
+        { name: "Google AI Studio", url: "https://aistudio.google.com/apps", desc: "Free Google platform for building AI apps with vibe coding, Gemini models, and one-click deployment." },
         { name: "Replit", url: "https://replit.com", desc: "1.8M+ visits. AI coding assistant and online IDE." },
         { name: "Codium (Qodo)", url: "https://www.qodo.ai", desc: "AI coding platform for quality-first development." },
         { name: "CodeSignal", url: "https://codesignal.com", desc: "Discover and develop in-demand coding skills with AI." },
         { name: "Base44", url: "https://www.base44.com", desc: "Build apps with AI in minutes." },
-        { name: "Jules (Google)", url: "https://jules.google", desc: "AI coding agent for task automation." },
+        { name: "Jules (Google)", url: "https://ai.google.dev/gemini-api/docs/jules", desc: "AI coding agent for task automation." },
         { name: "Firebase AI Studio", url: "https://firebase.google.com/products/genkit", desc: "AI app prototype builder." },
         { name: "Google Vertex AI", url: "https://cloud.google.com/vertex-ai", desc: "Developer AI tools and APIs with free tier." },
         { name: "Bubble", url: "https://bubble.io", desc: "No-code app builder with AI tools." }
@@ -252,7 +315,8 @@
         { name: "Adobe Firefly", url: "https://www.adobe.com/products/firefly.html", desc: "AI image and graphic creation suite." },
         { name: "Lexica Art", url: "https://lexica.art", desc: "AI image generator with style options." },
         { name: "RunDiffusion", url: "https://rundiffusion.com", desc: "AI image generation hosted service." },
-        { name: "Mermaid Chart", url: "https://www.mermaidchart.com", desc: "AI-powered diagram and flowchart generator." }
+        { name: "Mermaid Chart", url: "https://www.mermaidchart.com", desc: "AI-powered diagram and flowchart generator." },
+        { name: "Whimsical AI", url: "https://whimsical.com/ai", desc: "Generate diagrams, brainstorm ideas, and create flowcharts from text prompts. Free AI-powered visualization tool." }
       ],
       "🌐 Website Builders": [
         { name: "Lovable", url: "https://lovable.dev", desc: "432K+ visits. AI prototype app builder." },
@@ -283,6 +347,25 @@
       ]
     };
 
+    // Theme toggle functionality
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      document.getElementById('theme-icon').textContent = newTheme === 'dark' ? '☀️' : '🌙';
+      
+      // Save theme preference
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // Load saved theme on page load
+    function loadTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'light';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.getElementById('theme-icon').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
+
     function getDomain(url) {
       try {
         const urlObj = new URL(url);
@@ -296,6 +379,9 @@
       const domain = getDomain(url);
       return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
     }
+
+    // Initialize theme on page load
+    loadTheme();
 
     const container = document.getElementById('platforms-container');
 
