@@ -76,55 +76,56 @@
     .header-right {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 0.75rem;
     }
     .theme-toggle {
       background: var(--header-link-bg);
       border: none;
       border-radius: 50%;
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       transition: background 0.2s ease;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
+      flex-shrink: 0;
     }
     .theme-toggle:hover {
       background: var(--header-link-hover);
     }
     .header-links {
       display: flex;
-      gap: 1rem;
+      gap: 0.75rem;
     }
     .header-link {
       display: flex;
       align-items: center;
       background: var(--header-link-bg);
       border-radius: 6px;
-      padding: 0.5rem 1rem;
+      padding: 0.4rem 0.8rem;
       text-decoration: none;
       color: var(--text-primary);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       transition: background 0.2s ease;
-      min-width: 180px;
+      min-width: 120px;
       box-shadow: 0 1px 3px var(--shadow);
     }
     .header-link:hover {
       background: var(--header-link-hover);
     }
     .header-link img {
-      width: 16px;
-      height: 16px;
-      margin-right: 8px;
+      width: 14px;
+      height: 14px;
+      margin-right: 6px;
       border-radius: 2px;
     }
     .header-link span {
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 120px;
+      max-width: 100px;
     }
     main {
       max-width: 1200px;
@@ -194,25 +195,47 @@
     @media (max-width: 768px) {
       header {
         padding: 1rem;
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
       }
       .header-content {
-        margin-bottom: 1rem;
+        margin-bottom: 0;
+        flex: 1;
+      }
+      .header-content h1 {
+        font-size: 1.5rem;
+      }
+      .header-content p {
+        font-size: 0.9rem;
+        margin: 0.25rem 0 0;
       }
       .header-right {
-        flex-direction: column;
-        width: 100%;
-        align-items: flex-start;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+        flex-shrink: 0;
+      }
+      .theme-toggle {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
       }
       .header-links {
-        flex-direction: column;
-        width: 100%;
+        gap: 0.5rem;
       }
       .header-link {
-        justify-content: center;
-        min-width: 0;
-        padding: 0.75rem 1rem;
+        min-width: auto;
+        padding: 0.3rem 0.6rem;
+        font-size: 0.75rem;
+      }
+      .header-link img {
+        width: 12px;
+        height: 12px;
+        margin-right: 4px;
+      }
+      .header-link span {
+        max-width: 60px;
       }
       main {
         margin: 1.5rem auto;
@@ -240,14 +263,14 @@
       <div class="header-links">
         <a href="https://github.com/Quazmoz/ai.quinnfavo.com" class="header-link" target="_blank">
           <img src="https://github.com/fluidicon.png" alt="GitHub icon">
-          <span>GitHub Repo</span>
+          <span>GitHub</span>
         </a>
         <a href="https://profile.quinnfavo.com" class="header-link" target="_blank">
           <img src="https://profile.quinnfavo.com/favicon.ico" alt="Profile icon" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2265%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2250%22 font-weight=%22bold%22%3EP%3C/text%3E%3C/svg%3E';">
           <span>Profile</span>
         </a>
         <a href="https://quinnfavo.com" class="header-link" target="_blank">
-          <img src="https://quinnfavo.com/favicon.ico" alt="Website icon" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2265%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%2250%22 font-weight=%22bold%22%3EW%3C/text%3E%3C/svg%3E';">
+          <img src="https://quinnfavo.com/favicon.ico" alt="Website icon" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 fill=%22%23ddd%22/%3E%3Ctext x=%2250%22 y=%2265%22 text-anchor=%22middle%22 fill=%22%23666%22 font-size=%22%23666%22 font-size=%2250%22 font-weight=%22bold%22%3EW%3C/text%3E%3C/svg%3E';">
           <span>Website</span>
         </a>
       </div>
@@ -305,7 +328,7 @@
         { name: "Codium (Qodo)", url: "https://www.qodo.ai", desc: "AI coding platform for quality-first development." },
         { name: "CodeSignal", url: "https://codesignal.com", desc: "Discover and develop in-demand coding skills with AI." },
         { name: "Base44", url: "https://www.base44.com", desc: "Build apps with AI in minutes." },
-        { name: "Jules (Google)", url: "https://ai.google.dev/gemini-api/docs/jules", desc: "AI coding agent for task automation." },
+        { name: "Jules (Google)", url: "https://jules.google", desc: "AI coding agent for task automation." },
         { name: "Firebase AI Studio", url: "https://firebase.google.com/products/genkit", desc: "AI app prototype builder." },
         { name: "Google Vertex AI", url: "https://cloud.google.com/vertex-ai", desc: "Developer AI tools and APIs with free tier." },
         { name: "Bubble", url: "https://bubble.io", desc: "No-code app builder with AI tools." }
